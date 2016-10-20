@@ -13,19 +13,6 @@ var config = {
     versions: ['1.0.0']
   },
 
-  mailOptions: {
-    ourEmail: process.env.OUR_EMAIL || 'contact@wru.life',
-    passResetSubject: 'Compass Password Reset',
-    contactFormSubject: 'CONTACT FORM REQUEST',
-    betaFormSubject: 'BETA ACCESS REQUEST'
-  },
-
-  mailchimpOptions: {
-    clientID: '234483109740',
-    clientSecret: 'e7000d9fead1704c5a4cfbf9f87afee3',
-    apiKey: '176be00b71c02c86170d212ba1bfeed8-us13'
-  },
-
   url: 'mongodb://localhost:27017/todoapp'
 };
 
