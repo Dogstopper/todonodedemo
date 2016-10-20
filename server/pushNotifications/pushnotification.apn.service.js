@@ -18,7 +18,7 @@ var sandboxOptions = {
 };
 var sandboxApnConnection = new apn.Connection(sandboxOptions);
 
-function sendNewPassdownNotification(user, senderName) {
+function sendNewNotification(user, senderName) {
   PushNotification.find({ user: user._id }, function (err, devices) {
     if (err || !devices) {
       return;
@@ -32,8 +32,7 @@ function sendNewPassdownNotification(user, senderName) {
         note.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
         note.badge = device.badgeNumber + 1;
         note.sound = 'default';
-        note.alert = senderName + ' sent you a new PassDown!';
-        note.category = 'PASSDOWN_CATEGORY';
+        note.alert = senderName + ' sent you a new Message!';
 
         var userDevice = new apn.Device(device.deviceToken);
         if (device.production === undefined ||
@@ -79,8 +78,8 @@ function sendNewFriendRequestNotification(userId) {
 // Push notifications should never have to be reliable. And they should
 // not have to be syncronous with anything ever.
 exports.setup = function () {
-  PushNotificationEvent.on('newPassdown', function (user, senderName) {
-    sendNewPassdownNotification(user, senderName);
+  PushNotificationEvent.on('newMessage', function (user, senderName) {
+    sendNewNotification(user, senderName);
   });
   
   PushNotificationEvent.on('connectionRequest', function(userBId) {
