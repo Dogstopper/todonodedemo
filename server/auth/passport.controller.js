@@ -23,7 +23,7 @@ exports.createUserWithEmail = function (email, password, callback) {
       newUser.local.email    = email;
       newUser.local.password = newUser.hashPassword(password);
       newUser._id            = uuid.v4();
-      newUser.role           = config.userRoles[4];
+      newUser.role           = config.userRoles[3];
 
       // Generate an access token
       newUser.accessToken    = newUser.createAccessToken();
