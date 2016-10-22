@@ -13,7 +13,7 @@ var config = {
     versions: ['1.0.0']
   },
 
-  url: 'mongodb://localhost:27017/todoapp'
+  url: process.env.MONGO_DB
 };
 
 module.exports = config;
